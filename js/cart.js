@@ -9,5 +9,22 @@
 */
 
 function createCartModel(config) {
+	var model = createListModel(config);
+	
+	model.getTotalPrice = function() {
+		var idx;
+		var totalPrice = 0;
+		for(idx = 0; idx < this.items.length; ++idx){
+			totalPrice += this.items[idx].price;
+		}
+		return totalPrice.toFixed(2);
+	}; //getTotalPrice
 
+	$(function(){
+		model.toJSON();
+		var modelString = JSON.stringify(this.model);
+		return modelString;
+	}); //toJSON
+
+	return model;
 } //createCartModel()
