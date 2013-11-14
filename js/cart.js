@@ -20,11 +20,10 @@ function createCartModel(config) {
 		return totalPrice.toFixed(2);
 	}; //getTotalPrice
 
-	$(function(){
-		model.toJSON();
+	model.toJSON = function() {
 		var modelString = JSON.stringify(this.model);
 		return modelString;
-	}); //toJSON
+	}; //toJSON
 
 	return model;
 } //createCartModel()
